@@ -14,7 +14,6 @@ app.put('/api/quotes/:id', quoContr.update);
 app.delete('/api/quotes/:id', quoContr.delete);
 
 // app.use(express.static(__dirname + '/../build'))
-
 app.listen(process.env.SERVER_PORT, () => {
     console.log("Port "+process.env.SERVER_PORT+" is open.") 
 })

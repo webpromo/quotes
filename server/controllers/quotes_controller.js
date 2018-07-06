@@ -1,15 +1,24 @@
 
-
-
-let quotes = [];
-let id = 0;
+let quotes = [{
+        id:0,
+        text: "All those Internet quotes attributed to me are true.",
+        author: "Abe Lincoln",
+        category: "quotes"
+     },
+     {
+        id:1,
+        text: "We hold these truths to be self-evident, that all men are created equal...",
+        author: "Thomas Jefferson",
+        category: "equality"
+         }];
+let id = 2; // must be ONE MORE than the number of objects hard-coded above
 
 module.exports ={
     read: (req,res) => {
         res.status(200).send(quotes);
     },
     create: (req,res) => {
-        // console.log('HERE: '+req.body);
+        // console.log('req = '+req.body);
         const { text, author, category } = req.body;
         let quote = {
             id: id,
@@ -30,12 +39,13 @@ module.exports ={
         })
         quotes[ index ] ={
             id: quotes [ index ].id,
-            title: req.body.title || quotes[index].title,
-            author: req.body.author || quotes[index].author
+            text: req.body.text || quotes[index].text,
+            author: req.body.author || quotes[index].author,
+            category: req.body.category || quotes[index].category
         }
         res.status(200).send(quotes);
     },
-    delete: (req,res) => {
+    delete: (req,res) => { 
         let index = null;
         quotes.forEach((quote, i) => {
           if(quote.id === Number(req.params.id)) {index = i}
