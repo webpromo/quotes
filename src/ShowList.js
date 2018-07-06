@@ -12,25 +12,28 @@ class ShowList extends Component {
     }
 
     componentDidMount(){ 
-        let promise = axios.get('http://localhost:3006/api/quotes/')
+        let promise = axios.get('http://localhost:3000/api/quotes/')
         promise.then(res => { 
           this.setState({   
             quoteList: res.data.results
           })
         })
-      }
+        } 
 
-    render(){
-        let response ="Not working";
-        if (this.state.quoteList.id) { 
-response = this.state.quoteList.id
-        }
+    render(){ 
+        console.log("res = "+this.state.quoteList)
+        let quoteArray = this.state.quoteList.map(function(quo,i){
+            return (
+                <span className="item">{quo.author} on {quo.category}<br /></span>
+            )
+        });
+
+
         return (
-            // {componentDidMount()}
         <div className="listBox">
          CLICK TO VIEW, EDIT OR DELETE
          <div className="quoteList">
-          {response}
+          {quoteArray}
          </div>
          </div>
 
