@@ -18,7 +18,6 @@ module.exports ={
         res.status(200).send(quotes);
     },
     create: (req,res) => {
-        console.log('req.body.newQuoteObj = '+JSON.stringify(req.body.newQuoteObj));
         const { text, author, category } = req.body.newQuoteObj;
         let quote = {
             id: id,
@@ -28,8 +27,7 @@ module.exports ={
         }
         quotes.push(quote);
         id++;
-        console.log("quotes = "+quotes)
-        res.status(200).send(quotes);
+       res.status(200).send(quotes);
     },
     update: (req,res) => {
         let index = null;
@@ -48,7 +46,7 @@ module.exports ={
         res.status(200).send(quotes);
     },
     delete: (req,res) => { 
-        let index = null;
+        console.log('req.body = '+JSON.stringify(req.body));       let index = null;
         quotes.forEach((quote, i) => {
           if(quote.id === Number(req.params.id)) {index = i}
         })

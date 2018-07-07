@@ -38,15 +38,14 @@ class AddBox extends Component {
             author: this.state.newAuthor,
             category: this.state.newCategory
         }
-        console.log("in render: "+JSON.stringify(newQuoteData))
-        return( 
+       return( 
             <span>
                 <div className="add-box-left">
                     <input placeholder="Type or paste a new quote here" onChange={(e) => this.updateText(e.target.value)} />
                 </div>
                 <div className="add-box-right">
                     <input placeholder="Author's name" onChange={(e) => this.updateAuthor(e.target.value)} />
-                    <input placeholder="Topic" onChange={(e) => this.updateCategory(e.target.value)} />
+                    <input placeholder="Topic" onChange={(e) => this.updateCategory(e.target.value)} /><br />
                     <button onClick={() => this.props.addNewQuote(newQuoteData)}>Save</button>
                 </div>
             </span>

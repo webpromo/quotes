@@ -12,11 +12,13 @@ class ShowList extends Component {
             quoteList: [],
             editedQuote: "",
             editable: false,
-            selectedQuote: ""
+            selectedQuote: "",
+            emptyQuote: {}
         }
         this.handleInput = this.handleInput.bind(this);
         this.saveInput = this.saveInput.bind(this);
         this.handleEditClick = this.handleEditClick.bind(this)
+        this.trashQuote = this.trashQuote.bind(this)
         this.selectQuote = this.selectQuote.bind(this)
         this.addNewQuote = this.addNewQuote.bind(this)
     }
@@ -28,13 +30,13 @@ class ShowList extends Component {
         });
       }
 
-      handleEditClick() {
+    handleEditClick() {
         this.setState({
             editable: true
         })
     }
 
-      saveInput(){
+    saveInput(){
         let promise = axios.put('http://localhost:3006/api/quotes/'+this.state.selectedQuote.id, {
             text: this.state.editedQuote
         })
@@ -44,24 +46,26 @@ class ShowList extends Component {
                     return quote
                 }
             })
-            console.log(quote);
             this.setState({   
                 quoteList: res.data,
                 selectedQuote: quote,
                 editable: false
               })           
         }) 
-        } 
-        // trashQuote(){
-        //     let promise = axios.delete('http://localhost:3006/api/quotes/'+id, {
-        //         text: this.state.editedQuote
-        //     })
-        //     promise.then(res => {  
-        //         this.setState({   
-        //             quoteList: res.data,
-        //           })           
-        //     }) 
-        //     } 
+    } 
+
+    trashQuote(){
+        let promise = axios.delete('http://localhost:3006/api/quotes/'
+        +this.state.selectedQuote.id, {
+            text: this.state.editedQuote
+        })
+        promise.then(res => {  
+            this.setState({   
+                quoteList: res.data,
+                selectedQuote: this.state.emptyQuote
+            })           
+        }) 
+    } 
 
      selectQuote(value){
         this.setState({   
@@ -79,7 +83,6 @@ class ShowList extends Component {
     } 
 
     addNewQuote(newQuoteObj){
-        console.log("Before Posting: "+JSON.stringify(newQuoteObj))
         let promise = axios.post('http://localhost:3006/api/quotes/', {newQuoteObj})
         promise.then(res => {   
             this.setState({   
@@ -110,6 +113,7 @@ class ShowList extends Component {
                 <DisplayQuote showNow = {selectedQuote}
                 makeChange = {this.handleInput}
                 saveChange = {this.saveInput} 
+                trashQuote = {this.trashQuote} 
                 editable = {this.state.editable} 
                 handleClick = {this.handleEditClick} />
             </div>
@@ -118,10 +122,8 @@ class ShowList extends Component {
                 <AddBox addNewQuote = {this.addNewQuote}/>
             </div>
          </span>
-
     )
     }
-
 }
 
 export default ShowList;
