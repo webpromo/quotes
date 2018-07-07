@@ -12,10 +12,7 @@ class App extends Component {
 
           <ShowList />
 
-          <div className="displayBox">
-          "All those Internet quotes attributed to me are TRUE!"<br />
-          <span>- Abe Lincoln</span>
-          </div>
+
 
           <div className="addBox">
             <input placeholder="Enter quote text here"></input>
