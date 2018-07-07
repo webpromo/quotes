@@ -7,7 +7,7 @@ let quotes = [{
      },
      {
         id:1,
-        text: "We hold these truths to be self-evident, that all men are created equal...",
+        text: "We hold these truths to be self-relevant, that all men are created equal...",
         author: "Thomas Jefferson",
         category: "equality"
          }];

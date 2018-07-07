@@ -50,3 +50,12 @@ section {
   font-size:18pt;
 color:blue;
 }
+
+.add-box-left {
+  width:80%;
+  border: 1px solid gray;
+}
+
+.add-box-right {
+width:20%;
+}

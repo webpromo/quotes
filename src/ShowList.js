@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import DisplayQuote from './DisplayQuote';
+import AddBox from './AddBox';
 
 class ShowList extends Component {
     constructor(props){
@@ -76,6 +77,10 @@ class ShowList extends Component {
           })
         }) 
         } 
+
+        addNewQuote(newQuoteData){
+            console.log("addNewQuote data = "+newQuoteData)
+        }
  
     render(){ 
         const quoteArray = this.state.quoteList.map((quo,i) => {
@@ -96,13 +101,16 @@ class ShowList extends Component {
             </div>
 
             <div className="displayBox">
-            <DisplayQuote showNow = {selectedQuote}
-            makeChange = {this.handleInput}
-            saveChange = {this.saveInput} 
-            editable = {this.state.editable} 
-            handleClick = {this.handleClick} />
+                <DisplayQuote showNow = {selectedQuote}
+                makeChange = {this.handleInput}
+                saveChange = {this.saveInput} 
+                editable = {this.state.editable} 
+                handleClick = {this.handleClick} />
             </div>
 
+            <div className="addBox">
+                <AddBox addNew = {this.addNew}/>
+            </div>
          </span>
 
     )
