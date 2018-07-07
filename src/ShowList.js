@@ -4,15 +4,46 @@ import axios from 'axios';
 import DisplayQuote from './DisplayQuote';
 
 class ShowList extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
 
         this.state = {
-            quoteList: []
+            quoteList: [],
+            editedQuote: "",
+            editable: false
         }
+        this.handleInput = this.handleInput.bind(this);
+        this.saveInput = this.saveInput.bind(this);
+        this.handleClick = this.handleClick.bind(this)
+ 
     }
 
-    componentDidMount(){ 
+    handleInput(event){
+        let value = event.target.value;
+        this.setState({
+            editedQuote:value
+        });
+      }
+
+      handleClick() {
+        this.setState({
+            editable: true
+        })
+    }
+
+      saveInput(){
+        let promise = axios.put('http://localhost:3006/api/quotes/0', {
+            text: this.state.editedQuote
+        })
+        promise.then(res => {   //correct
+            this.setState({   
+                quoteList: res.data,
+                editable: false
+              })           
+        }) 
+        } 
+ 
+      componentDidMount(){ 
         let promise = axios.get('http://localhost:3006/api/quotes')
         promise.then(res => {   
           this.setState({   
@@ -37,9 +68,15 @@ class ShowList extends Component {
                 {quoteArray}
                 </div>
             </div>
+
             <div className="displayBox">
-            <DisplayQuote showNow = {this.state.quoteList[0]}/>
+            <DisplayQuote showNow = {this.state.quoteList[0]}
+            makeChange = {this.handleInput}
+            saveChange = {this.saveInput} 
+            editable = {this.state.editable} 
+            handleClick = {this.handleClick} />
             </div>
+
          </span>
 
     )

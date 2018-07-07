@@ -43,6 +43,7 @@ module.exports ={
             author: req.body.author || quotes[index].author,
             category: req.body.category || quotes[index].category
         }
+        console.log(quotes)
         res.status(200).send(quotes);
     },
     delete: (req,res) => { 
