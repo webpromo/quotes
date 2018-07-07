@@ -21,7 +21,7 @@ class DisplayQuote extends Component {
         : <input placeholder={this.props.showNow.text}  onChange={(e) =>  this.props.makeChange(e)} /> }</div>
 
         - {this.props.showNow ? this.props.showNow.author : "loading..."} 
-        {!this.props.editable ? <button onClick={this.props.handleClick}>Edit</button> : <button onClick={this.props.saveChange}>Save</button>}
+        {!this.props.editable ? <button onClick={this.props.handleEditClick}>Edit</button> : <button onClick={this.props.saveChange}>Save</button>}
         </span>
          )
         }

@@ -16,9 +16,9 @@ class ShowList extends Component {
         }
         this.handleInput = this.handleInput.bind(this);
         this.saveInput = this.saveInput.bind(this);
-        this.handleClick = this.handleClick.bind(this)
+        this.handleEditClick = this.handleEditClick.bind(this)
         this.selectQuote = this.selectQuote.bind(this)
- 
+        this.addNewQuote = this.addNewQuote.bind(this)
     }
 
     handleInput(event){
@@ -28,7 +28,7 @@ class ShowList extends Component {
         });
       }
 
-      handleClick() {
+      handleEditClick() {
         this.setState({
             editable: true
         })
@@ -69,18 +69,24 @@ class ShowList extends Component {
           })
      }
 
-      componentDidMount(){ 
+    componentDidMount(){ 
         let promise = axios.get('http://localhost:3006/api/quotes')
         promise.then(res => {   
           this.setState({   
             quoteList: res.data
           })
         }) 
-        } 
+    } 
 
-        addNewQuote(newQuoteData){
-            console.log("addNewQuote data = "+newQuoteData)
-        }
+    addNewQuote(newQuoteObj){
+        console.log("Before Posting: "+JSON.stringify(newQuoteObj))
+        let promise = axios.post('http://localhost:3006/api/quotes/', {newQuoteObj})
+        promise.then(res => {   
+            this.setState({   
+              quoteList: res.data
+            })
+          }) 
+        } 
  
     render(){ 
         const quoteArray = this.state.quoteList.map((quo,i) => {
@@ -105,11 +111,11 @@ class ShowList extends Component {
                 makeChange = {this.handleInput}
                 saveChange = {this.saveInput} 
                 editable = {this.state.editable} 
-                handleClick = {this.handleClick} />
+                handleClick = {this.handleEditClick} />
             </div>
 
             <div className="addBox">
-                <AddBox addNew = {this.addNew}/>
+                <AddBox addNewQuote = {this.addNewQuote}/>
             </div>
          </span>
 

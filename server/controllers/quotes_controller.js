@@ -18,8 +18,8 @@ module.exports ={
         res.status(200).send(quotes);
     },
     create: (req,res) => {
-        // console.log('req = '+req.body);
-        const { text, author, category } = req.body;
+        console.log('req.body.newQuoteObj = '+JSON.stringify(req.body.newQuoteObj));
+        const { text, author, category } = req.body.newQuoteObj;
         let quote = {
             id: id,
             text: text,
@@ -28,6 +28,7 @@ module.exports ={
         }
         quotes.push(quote);
         id++;
+        console.log("quotes = "+quotes)
         res.status(200).send(quotes);
     },
     update: (req,res) => {
