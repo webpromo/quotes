@@ -87,11 +87,7 @@ class ShowList extends Component {
     addNewQuote(newQuoteObj){
         let promise = axios.post('http://localhost:3006/api/quotes/', {newQuoteObj})
         promise.then(res => {   
-            let quote = res.data.find(quote => {
-                if(quote.id === this.state.selectedQuote.id){
-                    return quote
-                }
-            })
+            let quote = res.data.pop()
             this.setState({   
                 quoteList: res.data,
                 selectedQuote: quote
