@@ -1,7 +1,7 @@
 
 
-
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class AddBox extends Component {
     constructor(props){
@@ -32,6 +32,17 @@ class AddBox extends Component {
         })
     }
 
+    buildRandom(){
+        let promise = axios.get('https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en')
+        promise.then(res => {
+            this.setState({
+                newText: res.data.quoteText,
+                newAuthor: res.data.quoteAuthor,
+                newCategory: ""
+            })    
+    })
+}
+
     render(){
         var newQuoteData = {
             text: this.state.newText,
@@ -41,12 +52,15 @@ class AddBox extends Component {
        return( 
             <span>
                 <div className="add-box-left">
-                    <input placeholder="Type or paste a new quote here" onChange={(e) => this.updateText(e.target.value)} />
+                    <input placeholder="Type or paste a new quote here" onChange={(e) => this.updateText(e.target.value)}  value = {this.state.newText}/>
                 </div>
                 <div className="add-box-right">
-                    <input placeholder="Author's name" onChange={(e) => this.updateAuthor(e.target.value)} />
-                    <input placeholder="Topic" onChange={(e) => this.updateCategory(e.target.value)} /><br />
+                    <input placeholder="Author's name" onChange={(e) => this.updateAuthor(e.target.value)} value = {this.state.newAuthor}/>
+                    <input placeholder="Add a Topic" onChange={(e) => this.updateCategory(e.target.value)} /><br />
                     <button onClick={() => this.props.addNewQuote(newQuoteData)}>Save</button>
+                </div>
+                <div className="find-random">
+                    <button onClick={() => this.buildRandom()}>Find random quote</button>
                 </div>
             </span>
         )
