@@ -15,7 +15,7 @@ class ShowList extends Component {
             selectedQuote: "",
             emptyQuote: {}
         }
-        this.handleInput = this.handleInput.bind(this);
+        this.makeChange = this.makeChange.bind(this);
         this.saveInput = this.saveInput.bind(this);
         this.handleEditClick = this.handleEditClick.bind(this)
         this.trashQuote = this.trashQuote.bind(this)
@@ -23,7 +23,7 @@ class ShowList extends Component {
         this.addNewQuote = this.addNewQuote.bind(this)
     }
 
-    handleInput(event){
+    makeChange(event){
         let value = event.target.value;
         this.setState({
             editedQuote:value
@@ -37,6 +37,7 @@ class ShowList extends Component {
     }
 
     saveInput(){
+        console.log("here: "+this.state.selectedQuote.id)
         let promise = axios.put('http://localhost:3006/api/quotes/'+this.state.selectedQuote.id, {
             text: this.state.editedQuote
         })
@@ -55,6 +56,7 @@ class ShowList extends Component {
     } 
 
     trashQuote(){
+        console.log("trash: "+this.state.selectedQuote.id)
         let promise = axios.delete('http://localhost:3006/api/quotes/'
         +this.state.selectedQuote.id, {
             text: this.state.editedQuote
@@ -85,10 +87,16 @@ class ShowList extends Component {
     addNewQuote(newQuoteObj){
         let promise = axios.post('http://localhost:3006/api/quotes/', {newQuoteObj})
         promise.then(res => {   
-            this.setState({   
-              quoteList: res.data
+            let quote = res.data.find(quote => {
+                if(quote.id === this.state.selectedQuote.id){
+                    return quote
+                }
             })
-          }) 
+            this.setState({   
+                quoteList: res.data,
+                selectedQuote: quote
+              })           
+        }) 
         } 
  
     render(){ 
@@ -111,11 +119,11 @@ class ShowList extends Component {
 
             <div className="displayBox">
                 <DisplayQuote showNow = {selectedQuote}
-                makeChange = {this.handleInput}
+                makeChange = {this.makeChange}
                 saveChange = {this.saveInput} 
                 trashQuote = {this.trashQuote} 
                 editable = {this.state.editable} 
-                handleClick = {this.handleEditClick} />
+                handleEditClick = {this.handleEditClick} />
             </div>
 
             <div className="addBox">

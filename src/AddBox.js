@@ -43,6 +43,15 @@ class AddBox extends Component {
     })
 }
 
+addNewQuote(newQuoteData){
+  this.props.addNewQuote(newQuoteData)
+  this.setState({
+    newText: "",
+    newAuthor: "",
+    newCategory: ""
+  })
+}
+
     render(){
         var newQuoteData = {
             text: this.state.newText,
@@ -56,8 +65,9 @@ class AddBox extends Component {
                 </div>
                 <div className="add-box-right">
                     <input placeholder="Author's name" onChange={(e) => this.updateAuthor(e.target.value)} value = {this.state.newAuthor}/>
+
                     <input placeholder="Add a Topic" onChange={(e) => this.updateCategory(e.target.value)} /><br />
-                    <button onClick={() => this.props.addNewQuote(newQuoteData)}>Save</button>
+                    <button onClick={() => this.addNewQuote(newQuoteData)}>Save</button>
                 </div>
                 <div className="find-random">
                     <button onClick={() => this.buildRandom()}>Find random quote</button>
