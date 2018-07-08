@@ -12,12 +12,6 @@ class App extends Component {
 
           <ShowList />
 
-
-
-          <div className="addBox">
-            <input placeholder="Enter quote text here"></input>
-          </div>
-
         </section>
 
     );

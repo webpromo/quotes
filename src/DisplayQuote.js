@@ -12,17 +12,20 @@ class DisplayQuote extends Component {
     }
 
     render(){ 
-console.log("IN DisplayQuote render - "+this.props.showNow)
         return (
-         <span>
+         <span className="display-span">
             <div className="singleQuote">{!this.props.editable ? 
-       this.props.showNow ? this.props.showNow.text : "loading..."
-        : <input defaultValue={this.props.showNow.text} onChange={(e) =>  this.props.makeChange(e)} /> }</div>
+        this.props.showNow ? this.props.showNow.text : "loading..."
+            : <input className="edit-field" defaultValue={this.props.showNow.text} onChange={(e) =>  this.props.makeChange(e)} /> }</div>
 
-        - {this.props.showNow ? this.props.showNow.author : "loading..."} 
-        {!this.props.editable ? 
-        
-        <button onClick={() => this.props.handleEditClick()}>Edit</button> : <button onClick={() => this.props.saveChange()}>Save</button>} <button onClick={() => this.props.trashQuote()}>Delete</button>
+            <div className="author-name">
+                - {this.props.showNow ? this.props.showNow.author : "loading..."} 
+            </div>
+            {!this.props.editable ? 
+            
+            <button onClick={() => this.props.handleEditClick()}>Edit</button> : <button onClick={() => this.props.saveChange()}>Save</button>} 
+            
+            <button onClick={() => this.props.trashQuote()}>Delete</button>
         </span>
          )
         }

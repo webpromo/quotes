@@ -37,7 +37,6 @@ class ShowList extends Component {
     }
 
     saveInput(){
-        console.log("here: "+this.state.selectedQuote.id)
         let promise = axios.put('http://localhost:3006/api/quotes/'+this.state.selectedQuote.id, {
             text: this.state.editedQuote
         })
@@ -56,7 +55,6 @@ class ShowList extends Component {
     } 
 
     trashQuote(){
-        console.log("trash: "+this.state.selectedQuote.id)
         let promise = axios.delete('http://localhost:3006/api/quotes/'
         +this.state.selectedQuote.id, {
             text: this.state.editedQuote
@@ -105,9 +103,10 @@ class ShowList extends Component {
         var selectedQuote = this.state.selectedQuote || this.state.quoteList[0];
 
         return (
-        <span>
+        <span className="main-span">
             <div className="listBox">
-                CLICK TO VIEW, EDIT OR DELETE
+                CLICK TO VIEW, EDIT OR DELETE<br />
+                <hr />
                 <div className="quoteList">
                 {quoteArray}
                 </div>
@@ -121,7 +120,7 @@ class ShowList extends Component {
                 editable = {this.state.editable} 
                 handleEditClick = {this.handleEditClick} />
             </div>
-
+            
             <div className="addBox">
                 <AddBox addNewQuote = {this.addNewQuote}/>
             </div>

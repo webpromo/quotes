@@ -1,7 +1,7 @@
 
 let quotes = [{
         id:0,
-        text: "All those Internet quotes attributed to me are true.",
+        text: "All those Internet quotes attributed to me are absurd.",
         author: "Abe Lincoln",
         category: "quotes"
      },
@@ -10,8 +10,15 @@ let quotes = [{
         text: "We hold these truths to be self-relevant, that all men are created equal...",
         author: "Thomas Jefferson",
         category: "equality"
-         }];
-let id = 2; // must be ONE MORE than the number of objects hard-coded above
+         },
+      { id:2,
+        text: "I'm ugly, and I'm proud!",
+        author: "SpongeBob",
+        category: "body positivity"
+        }       
+        
+    ];
+let id = 3; // must be ONE MORE than the number of objects hard-coded above
 
 module.exports ={
     read: (req,res) => {
@@ -42,11 +49,10 @@ module.exports ={
             author: req.body.author || quotes[index].author,
             category: req.body.category || quotes[index].category
         }
-        console.log(quotes)
         res.status(200).send(quotes);
     },
     delete: (req,res) => { 
-        console.log('req.body = '+JSON.stringify(req.body));       let index = null;
+        let index = null;
         quotes.forEach((quote, i) => {
           if(quote.id === Number(req.params.id)) {index = i}
         })
