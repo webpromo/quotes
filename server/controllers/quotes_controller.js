@@ -20,10 +20,30 @@ let quotes = [{
              text: "Let the past die. Kill it if you have to.",
              author: "Kylo Ren",
              category: "progress"
-         }       
+         }   ,
+         { id:4,
+              text: "You got to put your behind in your past.",
+              author: "Pumbaa",
+              category: "discouragement"
+          },
+          { id:5,
+               text: "What’s normal anyways?",
+               author: "Forrest Gump",
+               category: "diversity"
+           }  ,
+           { id:6,
+                text: "Roads? Where we're going, we don't need roads.",
+                author: "Dr. Emmett Brown",
+                category: "tech"
+            },
+            { id:7,
+                 text: "You take the blue pill - the story ends, you wake up in your bed and believe whatever you want to believe. You take the red pill - you stay in Wonderland and I show you how deep the rabbit-hole goes.",
+                 author: "Morpheus",
+                 category: "reality"
+             }       
         
-    ]; 
-let id = 4; // must be ONE MORE than the number of objects hard-coded above 
+    ];   
+let id = 8; // must be ONE MORE than the number of objects hard-coded above 
 
 module.exports ={
     read: (req,res) => {
@@ -64,5 +84,4 @@ module.exports ={
         quotes.splice(index,1)
         res.status(200).send(quotes);
     }
-
 };

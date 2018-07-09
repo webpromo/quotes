@@ -1,5 +1,5 @@
 body {
-  color:black;
+    color:black;
   background-color:black;
   font-family: Arial, Helvetica, sans-serif;
     /* color:#0fe997; */
@@ -30,7 +30,7 @@ section {
 
 
 .listBox {
-  border: 1px solid black;
+    border: 1px solid black;
   padding:10px;
   width:290px;
   height:45vh;
@@ -45,7 +45,7 @@ section {
 }
 
 .displayBox {
-  border:1px solid black;
+    border:1px solid black;
   padding:10px;
   width:558px;  /* 38.2vw; */
   height:45vh;
@@ -76,9 +76,10 @@ section {
   flex-direction: column;
 }
 .singleQuote {
-  font-size:32pt;
-margin: 0px 30px;
+  font-size: 2.5vmax;   /*calc(18pt + 1.25vw);    32pt; */
+  margin: 0px 30px;
   width:90%;
+  /* overflow:scroll; */
 }
 
 .author-name {
@@ -87,13 +88,13 @@ margin: 0px 30px;
 }
 
 .addBox {
-  BORDER:1PX SOLID BLACK;  /* comment */
+  BORDER:1PX SOLID BLACK;
   width:100%;
   height:28vh;
   font-size:14pt;
   text-align: center;
   margin-top:13px;
-  /* background-color: #253759;
+  /*   background-color: #253759;
     border:2px solid #874493;
     opacity: .8;
     border-radius: 5px;

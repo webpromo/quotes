@@ -59,15 +59,15 @@ class ShowList extends Component {
         let promise = axios.delete('http://localhost:3006/api/quotes/'
         +this.state.selectedQuote.id
         // , {text: this.state.editedQuote}
-    )
+        )
         promise.then(res => {  
             this.setState({   
                 quoteList: res.data,
-                // selectedQuote: this.state.emptyQuote
+                selectedQuote: this.state.quoteList[0]
             })           
         }) 
     } 
-
+ 
      selectQuote(value){
         this.setState({   
             selectedQuote: value
@@ -87,7 +87,6 @@ class ShowList extends Component {
         let promise = axios.post('http://localhost:3006/api/quotes/', {newQuoteObj})
         promise.then(res => {   
             let quote = res.data[res.data.length-1]
-            console.log(res.data);
             this.setState({   
                 quoteList: res.data,
                 selectedQuote: quote
