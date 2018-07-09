@@ -1,34 +1,31 @@
 
 
-import React, { Component } from 'react';
+import React from 'react';
 
-class DisplayQuote extends Component {
-    constructor(props){
-        super(props)
-    }  
 
-    render(){ 
+export default function DisplayQuote(props){
+
+
         return (
          <span className="display-span">
             <span className="keep-together">
-            <div className="singleQuote">{!this.props.editable ? 
-        this.props.showNow ? this.props.showNow.text : "loading..."
-            : <input className="edit-field" defaultValue={this.props.showNow.text} onChange={(e) =>  this.props.makeChange(e)} /> }</div>
+            <div className="singleQuote">{!props.editable ? 
+        props.showNow ? props.showNow.text : "loading..."
+            : <input className="edit-field" defaultValue={props.showNow.text} onChange={(e) =>  props.makeChange(e)} /> }</div>
 
             <div className="author-name">
-                {this.props.showNow ? "- "+this.props.showNow.author : "loading..."} 
+                {props.showNow ? "- "+props.showNow.author : "loading..."} 
             </div>
             </span> 
             
             <div>
-            {!this.props.editable ? 
-                <button onClick={() => this.props.handleEditClick()}>Edit</button> : <button onClick={() => this.props.saveChange()}>Save</button>} 
+            {!props.editable ? 
+                <button onClick={() => props.handleEditClick()}>Edit</button> : <button onClick={() => props.saveChange()}>Save</button>} 
             
-            <button onClick={() => this.props.trashQuote()}>Delete</button>
+            <button onClick={() => props.trashQuote()}>Delete</button>
             </div>
         </span>
          )
-        }
-}
+
+    }
    
-export default DisplayQuote;
