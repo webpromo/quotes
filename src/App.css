@@ -1,26 +1,27 @@
 body {
-  /* color:black; */
+  color:black;
   background-color:black;
   font-family: Arial, Helvetica, sans-serif;
-    color:#0fe997;
+    /* color:#0fe997; */
 }
 
 section {
 
-  /* background-color:white; */
-  /* border: 1px solid #black; */
+  background-color:white;
+  border: 1px solid black;
   margin:70px auto;
   padding:12px;
   width:900px;
-  height:80vh;
+  height:700px;
   flex: auto;
-    border-radius: 5px;
+    /* border-radius: 5px;
     border: 2px solid #874493;
-    background-image: linear-gradient(-15deg, #874493 8%, #2259bf 25%, #1bb5ad 100%);
+    background-image: linear-gradient(-15deg, #874493 8%, #2259bf 25%, #1bb5ad 100%); */
 }
 
 .main-span {
   width:100%;
+  height:100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -29,54 +30,74 @@ section {
 
 
 .listBox {
-  /* border: 1px solid black; */
+  border: 1px solid black;
   padding:10px;
   width:290px;
   height:45vh;
   font-size:9pt;
+  font-weight:bold;
   text-align: center;
-    border:2px solid #874493;
+    /* border:2px solid #874493;
     background-color: #253759;
     opacity: .8;
     border-radius: 5px;
-    box-shadow: 6px 6px 17px 2px rgba(0, 0, 0, .4);
+    box-shadow: 6px 6px 17px 2px rgba(0, 0, 0, .4); */
 }
 
 .displayBox {
-  /* border:1px solid #black; */
+  border:1px solid black;
   padding:10px;
-  width:38.2vw;
+  width:558px;  /* 38.2vw; */
   height:45vh;
   font-size:24pt;
   text-align: center;
-    border:2px solid #874493;
+    /* border:2px solid #874493;
     background-color: #253759;
     opacity: .8;
     border-radius: 5px;
-    box-shadow: 6px 6px 17px 2px rgba(0, 0, 0, .4);
+    box-shadow: 6px 6px 17px 2px rgba(0, 0, 0, .4); */
 }
+
 .display-span {
+  margin: 30px 0px;
   width:100%;
   font-size:12pt;
+  height:90%;
   display: flex;
   flex-direction: column; /* must have */
-  /* align-content: space-between;   NO WORKY */
+  align-content: space-between;   
   justify-content: space-around; 
   align-items:center; /* must have */
-  padding-right:20px;
+}
+
+.keep-together {
+  width:100%;
+  display: flex;
+  flex-direction: column;
+}
+.singleQuote {
+  font-size:32pt;
+margin: 0px 30px;
+  width:90%;
+}
+
+.author-name {
+  margin-top:16px;
+  font-size:14pt;
 }
 
 .addBox {
+  BORDER:1PX SOLID BLACK;  /* comment */
   width:100%;
-  height:30vh;
+  height:28vh;
   font-size:14pt;
   text-align: center;
   margin-top:13px;
-  background-color: #253759;
+  /* background-color: #253759;
     border:2px solid #874493;
     opacity: .8;
     border-radius: 5px;
-    box-shadow: 6px 6px 17px 2px rgba(0, 0, 0, .4);
+    box-shadow: 6px 6px 17px 2px rgba(0, 0, 0, .4); */
 }
 
 .quoteList {
@@ -86,25 +107,13 @@ section {
   line-height: 22px;
 }
 
-.singleQuote {
-  font-size:32pt;
-  text-align: center;
-  width:90%;
-  MARGIN: 50 30PX;  /* BECAUSE FLEX NOT WORKING */
-}
-
 .add-span {
   padding:20px;
-  /* display: flex;
-  flex-direction: row; 
-  align-content: center;  
-  justify-content: space-around; 
-  align-items:center;*/
 } 
 
 .add-box-left {
   width: 70%;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
   height: 50%;
   float:left;
   margin:20px;
@@ -114,8 +123,9 @@ section {
   font-size:14pt;
 }
 
-.textarea {
+textarea {
   width:100%;
+  height:100%;
   font-family: Arial, Helvetica, sans-serif;
   font-size:18pt;
   background-color:lightgray;

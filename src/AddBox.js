@@ -61,17 +61,17 @@ addNewQuote(newQuoteData){
        return( 
             <span className="add-span">
                 <div className="add-box-left">
-                    <textarea cols="101" rows="10" placeholder="Type or paste a new quote here" onChange={(e) => this.updateText(e.target.value)}  value = {this.state.newText}/>
+                    <textarea cols="101" rows="10" placeholder="Type or paste a new quote here" onChange={(e) => this.updateText(e.target.value)} value = {this.state.newText} fontSize="18pt;"/>
                 </div>
                 <div className="add-box-right">
                     <input placeholder="Author's name" onChange={(e) => this.updateAuthor(e.target.value)} value = {this.state.newAuthor}/>
 
-                    <input placeholder="Add a topic" onChange={(e) => this.updateCategory(e.target.value)} />
+                    <input placeholder="Add a topic" onChange={(e) => this.updateCategory(e.target.value)} value = {this.state.newCategory}/>
                     <br />
                     <button onClick={() => this.addNewQuote(newQuoteData)}>Save</button>
 
                 </div><br clear = "all" />
-                
+
                 <div className="find-random">
                     <button onClick={() => this.buildRandom()}>Find random quote</button>
                 </div>

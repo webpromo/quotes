@@ -11,14 +11,19 @@ let quotes = [{
         author: "Thomas Jefferson",
         category: "equality"
          },
-      { id:2,
-        text: "I'm ugly, and I'm proud!",
-        author: "SpongeBob",
-        category: "body positivity"
-        }       
+        { id:2,
+           text: "I'm ugly, and I'm proud!",
+           author: "SpongeBob",
+           category: "body positivity"
+        },
+        { id:3,
+             text: "Let the past die. Kill it if you have to.",
+             author: "Kylo Ren",
+             category: "progress"
+         }       
         
-    ];
-let id = 3; // must be ONE MORE than the number of objects hard-coded above
+    ]; 
+let id = 4; // must be ONE MORE than the number of objects hard-coded above 
 
 module.exports ={
     read: (req,res) => {

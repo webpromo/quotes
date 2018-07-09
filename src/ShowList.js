@@ -13,7 +13,8 @@ class ShowList extends Component {
             editedQuote: "",
             editable: false,
             selectedQuote: "",
-            emptyQuote: {}
+            emptyQuote: {},
+            refresh: ""
         }
         this.makeChange = this.makeChange.bind(this);
         this.saveInput = this.saveInput.bind(this);
@@ -56,13 +57,13 @@ class ShowList extends Component {
 
     trashQuote(){
         let promise = axios.delete('http://localhost:3006/api/quotes/'
-        +this.state.selectedQuote.id, {
-            text: this.state.editedQuote
-        })
+        +this.state.selectedQuote.id
+        // , {text: this.state.editedQuote}
+    )
         promise.then(res => {  
             this.setState({   
                 quoteList: res.data,
-                selectedQuote: this.state.emptyQuote
+                // selectedQuote: this.state.emptyQuote
             })           
         }) 
     } 
@@ -85,13 +86,14 @@ class ShowList extends Component {
     addNewQuote(newQuoteObj){
         let promise = axios.post('http://localhost:3006/api/quotes/', {newQuoteObj})
         promise.then(res => {   
-            let quote = res.data.pop()
+            let quote = res.data[res.data.length-1]
+            console.log(res.data);
             this.setState({   
                 quoteList: res.data,
                 selectedQuote: quote
-              })           
-        }) 
-        } 
+              })
+        })
+    }
  
     render(){ 
         const quoteArray = this.state.quoteList.map((quo,i) => {
@@ -120,7 +122,7 @@ class ShowList extends Component {
                 editable = {this.state.editable} 
                 handleEditClick = {this.handleEditClick} />
             </div>
-            
+
             <div className="addBox">
                 <AddBox addNewQuote = {this.addNewQuote}/>
             </div>
