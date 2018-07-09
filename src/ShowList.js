@@ -38,7 +38,7 @@ class ShowList extends Component {
     }
 
     saveInput(){
-        let promise = axios.put('http://localhost:3006/api/quotes/'+this.state.selectedQuote.id, {
+        let promise = axios.put('/api/quotes/'+this.state.selectedQuote.id, {
             text: this.state.editedQuote
         })
         promise.then(res => {   
@@ -56,7 +56,7 @@ class ShowList extends Component {
     } 
 
     trashQuote(){
-        let promise = axios.delete('http://localhost:3006/api/quotes/'
+        let promise = axios.delete('/api/quotes/'
         +this.state.selectedQuote.id
         // , {text: this.state.editedQuote}
         )
@@ -75,7 +75,7 @@ class ShowList extends Component {
      }
 
     componentDidMount(){ 
-        let promise = axios.get('http://localhost:3006/api/quotes')
+        let promise = axios.get('/api/quotes')
         promise.then(res => {   
           this.setState({   
             quoteList: res.data
@@ -84,7 +84,7 @@ class ShowList extends Component {
     } 
 
     addNewQuote(newQuoteObj){
-        let promise = axios.post('http://localhost:3006/api/quotes/', {newQuoteObj})
+        let promise = axios.post('/api/quotes/', {newQuoteObj})
         promise.then(res => {   
             let quote = res.data[res.data.length-1]
             this.setState({   
