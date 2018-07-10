@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DisplayQuote from './DisplayQuote';
 import AddBox from './AddBox';
+import ListItem from './ListItem';
 
 class ShowList extends Component {
     constructor(props){
@@ -96,9 +97,13 @@ class ShowList extends Component {
  
     render(){ 
         const quoteArray = this.state.quoteList.map((quo,i) => {
+            {console.log(quo)}
             return (
-                <div className="item" key={i} onClick={() => this.selectQuote(quo)} > {quo.author} on {quo.category}<br /></div>
-            )
+                <div className="item" key={i} onClick={() => this.selectQuote(quo)} > 
+
+                <ListItem showThis={quo} /><br />
+                </div>
+            )  
         });
 
         var selectedQuote = this.state.selectedQuote || this.state.quoteList[0];
