@@ -11,8 +11,8 @@ section {
   border: 1px solid black;
   margin:70px auto;
   padding:12px;
-  width:900px;
-  height:664px;
+  width:818px;
+  height:455px;
   flex: auto;
     border-radius: 5px;
     border: 2px solid #874493;
@@ -32,8 +32,8 @@ section {
 .listBox {
     /* border: 1px solid black; */
   padding:10px;
-  width:290px;
-  height:45vh;
+  width:244px;
+  height:43vh;
   font-size:9pt;
   font-weight:bold;
   text-align: center;
@@ -47,8 +47,8 @@ section {
 .displayBox {
     /* border:1px solid black; */
   padding:10px;
-  width:548px;  /* 38.2vw; */
-  height:45vh;
+  width:514px;  /* 38.2vw; */
+  height:43vh;
   font-size:24pt;
   text-align: center;
     border:2px solid #874493;
@@ -90,15 +90,16 @@ section {
 .addBox {
   /* BORDER:1PX SOLID BLACK; */
   width:100%;
-  height:24vh;
+  height:26vh;
   font-size:14pt;
   text-align: center;
-  margin-top:13px;
+  margin-top:12px;
     background-color: #253759;
     border:2px solid #874493;
     opacity: .8;
     border-radius: 5px;
-    box-shadow: 6px 6px 17px 2px rgba(0, 0, 0, .4);
+    box-shadow: 6px 6px 17px 4px rgba(0, 0, 0, .4);
+  padding:4px;
 }
 
 .quoteList {
@@ -133,22 +134,23 @@ textarea {
 
 .add-box-right {
   width:20%;
+  height:53%;
   float:left;
   align-content: center;
-  margin: 14px;
+  margin: 8px;
 }
 
 input {
   width:100%;
-  font-size: 12pt;
-  margin:8px;
+  font-size: 11pt;
+  margin:0px 6px;
   background-color:lightgray;
 }
 
 .find-random {
-  margin:auto;
+  margin:0px;
   width:80%;
-  margin-top:20px;
+  margin-top:-12px;
 }
 
 button {
